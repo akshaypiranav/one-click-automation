@@ -1,9 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const dependencies = require("./Controller/dependencies")
-const folderCreation = require("./Controller/folderCreation")
 
+const passer= require('./Controller/passer')
 
 
 
@@ -18,13 +17,15 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 app.get('/',(req,res)=>{
-    
+
     res.send("Backend For One Click Automation")
 })
 
 app.post('/api', (req, res) => {
   const { Tool,Language,TestRunner,DirectoryName,DirectoryPath } = req.body;
-  
+  console.log(Tool,Language,TestRunner,DirectoryName,DirectoryPath)
+
+  passer.oneclickAutomation(Tool,Language,TestRunner,DirectoryName,DirectoryPath)
 
   
   

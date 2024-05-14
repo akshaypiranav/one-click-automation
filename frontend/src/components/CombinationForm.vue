@@ -128,11 +128,14 @@ export default {
         handleSubmit() {
             axios.post('http://localhost:8000/api', this.SelectedCombination)
                 .then(response => {
-                    alert(response.data.status);
+                    console.log(response.data)
+                    this.clearDetails()
                 })
                 .catch(error => {
                     console.error('API Error:', error);
+                    this.clearDetails()
                 });
+                
         },
         clearDetails() {
             this.SelectedCombination = {
